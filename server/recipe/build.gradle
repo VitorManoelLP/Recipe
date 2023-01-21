@@ -33,7 +33,7 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:${JunitPlatformVersion}")
 
 	testImplementation 'org.junit.platform:junit-platform-suite-engine:1.8.2'
-ssssssssssssssssssssssssssssssssssssssssss
+
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${JunitPlatformVersion}")
 	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.8.2")
 }
