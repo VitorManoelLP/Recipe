@@ -1,0 +1,4 @@
+spring:
+  liquibase:
+    contexts: dev
+    changeLog: classpath:db/changelog/master.xml
