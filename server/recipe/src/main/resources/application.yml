@@ -1,4 +1,11 @@
 spring:
+  application:
+    name: recipe-api
   liquibase:
     contexts: dev
     changeLog: classpath:db/changelog/master.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka-host:http://localhost:8761/eureka/}
