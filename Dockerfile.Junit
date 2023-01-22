@@ -1,6 +1,0 @@
-FROM openjdk:17-alpine AS JAVA
-FROM gradle:7.6-alpine AS GRADLE
-USER root
-WORKDIR /app
-COPY server/api-recipe/ .
-RUN gradle clean test
