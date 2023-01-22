@@ -8,4 +8,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Backend Recipe Test/Build
-        run: docker build -f Dockerfile.Junit .
+        run: ./continuous integration/docker build -f Dockerfile.Junit .
