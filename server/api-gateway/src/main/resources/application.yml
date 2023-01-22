@@ -13,6 +13,10 @@ spring:
           uri: lb://api-recipe
           predicates:
             - Path=/api-recipe/**
+        - id: api-socket-io
+          uri: lb://api-socket-io
+          predicates:
+            - Path=/api-socket-io/**
       discovery:
         locator:
           enabled: true
