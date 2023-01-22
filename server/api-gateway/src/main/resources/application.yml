@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: api-recipe
+#          uri: lb://api-recipe
+#          predicates:
+#            - Path=/api-recipe/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+        basePath: /actuator
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: false
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,3 +1,3 @@
-echo "Starting api-gateway application"
-cd server/api-eureka/
+echo "Starting server-eureka application"
+cd server/server-eureka/
 ./gradlew bootRun 
