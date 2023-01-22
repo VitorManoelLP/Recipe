@@ -4,13 +4,19 @@ server:
 spring:
   application:
     name: api-gateway
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: api-recipe
-#          uri: lb://api-recipe
-#          predicates:
-#            - Path=/api-recipe/**
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      routes:
+        - id: api-recipe
+          uri: lb://api-recipe
+          predicates:
+            - Path=/api-recipe/**
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
 
 management:
   endpoints:

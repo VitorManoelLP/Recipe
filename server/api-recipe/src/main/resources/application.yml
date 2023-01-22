@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: api-recipe
@@ -5,7 +8,17 @@ spring:
     contexts: dev
     changeLog: classpath:db/changelog/master.xml
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+        basePath: /actuator
+
 eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: false
   client:
     serviceUrl:
       defaultZone: ${eureka-host:http://localhost:8761/eureka/}
