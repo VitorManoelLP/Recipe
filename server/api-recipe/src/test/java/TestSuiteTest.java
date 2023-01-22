@@ -2,6 +2,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.AnnotationUtils;
 import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
 import java.io.File;
 import java.util.*;
@@ -20,6 +21,21 @@ public class TestSuiteTest {
     }
 
     private static void validate(Set<Class<?>> suites, Set<String> testFilesName) {
+
+        boolean selectClassesAnnotation = suites.stream().map(s -> Arrays.stream(s.getAnnotations()).toList()).flatMap(List::stream)
+                .anyMatch(a -> a.annotationType().equals(SelectClasses.class));
+
+        boolean suiteAnnotation = suites.stream().map(s -> Arrays.stream(s.getAnnotations()).toList()).flatMap(List::stream)
+                .anyMatch(a -> a.annotationType().equals(Suite.class));
+
+        Assertions.assertThat(selectClassesAnnotation)
+                .withFailMessage("Há suites de testes sem a anotação SelectClasses!")
+                .isTrue();
+
+        Assertions.assertThat(suiteAnnotation)
+                .withFailMessage("Há suites de testes sem a anotação Suite!")
+                .isTrue();
+
         suites.forEach(suite -> AnnotationUtils.findAnnotation(suite, SelectClasses.class)
                 .map(SelectClasses::value)
                 .stream().toList().forEach(clazz -> {
