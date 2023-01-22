@@ -7,5 +7,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install Jdk17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: pmd
+        uses: pmd/pmd-github-action@v1
+        with:
+          rulesets: 'ruleset.xml'
+          analyzeModifiedFilesOnly: false
       - name: Backend Recipe Test/Build
         run: docker build -f Dockerfile.Junit .
