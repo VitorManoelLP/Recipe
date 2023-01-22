@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+ eureka:
+  build:
+   context: .
+   dockerfile: Dockerfile.Eureka
+  container_name: EUREKA
+  ports:
+   - "8761:8761"
+  networks:
+   - local-network
+ gateway:
+  links:
+   - eureka
+  depends_on:
+   eureka:
+    condition: service_started
+  build:
+   context: .
+   dockerfile: Dockerfile.Gateway
+  container_name: GATEWAY
+  ports:
+   - "8080:8080"
+  networks:
+   - local-network
+  environment:
+   - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+
+networks:
+ local-network:
+  driver: bridge
