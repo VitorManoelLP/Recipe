@@ -1,4 +1,4 @@
-package com.recipe.apirecipe.socketIO;
+package com.recipe.apirecipe.socketio;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

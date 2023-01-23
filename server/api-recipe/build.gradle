@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version "${SpringVersion}"
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'pmd'
 }
 
 group = 'com.recipe'
@@ -13,7 +14,7 @@ repositories {
 }
 
 dependencies {
-
+	pmd 'net.sourceforge.pmd:pmd-java:6.34.0'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
@@ -49,4 +50,23 @@ test {
 	filter {
 		includeTestsMatching "TestSuite*"
 	}
+}
+
+pmdMain {
+	excludes = ["com/recipe/apirecipe/**/*Application.java"]
+}
+
+pmd {
+	sourceSets = [sourceSets.main]
+	incrementalAnalysis = true
+	consoleOutput = true
+	toolVersion = "6.21.0"
+	rulesMinimumPriority = 5
+	threads = 4
+	ruleSets = ["category/java/errorprone.xml",
+				"category/java/bestpractices.xml",
+				"category/java/design.xml",
+				"category/java/performance.xml",
+				"category/java/codestyle.xml",
+				"category/java/multithreading.xml"]
 }

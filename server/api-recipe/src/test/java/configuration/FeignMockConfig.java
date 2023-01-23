@@ -1,6 +1,6 @@
 package configuration;
 
-import com.recipe.apirecipe.socketIO.SocketIOFeign;
+import com.recipe.apirecipe.socketio.SocketIOFeign;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 

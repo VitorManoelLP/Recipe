@@ -1,4 +1,4 @@
-package com.recipe.apirecipe.socketIO;
+package com.recipe.apirecipe.socketio;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
