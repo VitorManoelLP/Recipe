@@ -12,6 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Pmd
-        run: docker build -f ./continuous_integration/Pmd -t pmd .
+        run: docker build -f ./continuous\ integration/Pmd .
       - name: Backend Recipe Test/Build
-        run: docker build -f ./continuous_integration/Junit -t junit .
+        run: docker build -f ./continuous\ integration/Junit .
