@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
   public login() {
     this.form.reset();
     this.form.clearValidators();
-
   }
 
 
