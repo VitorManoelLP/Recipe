@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './authentication/login/login.module';
 
 @NgModule({
   declarations: [
