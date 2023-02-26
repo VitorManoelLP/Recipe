@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, Injector } from '@angular/core';
+import { FormControlStatus } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -8,8 +9,9 @@ import { MatInput } from '@angular/material/input';
   template: '{{ error }}',
 })
 export class FormFieldValidationDirective implements AfterViewInit {
-  public error = '';
+  public error: string = '';
   private inputRef: MatFormFieldControl<MatInput>;
+  private lastError: string = '';
 
   constructor(private _inj: Injector) {}
 
@@ -19,11 +21,14 @@ export class FormFieldValidationDirective implements AfterViewInit {
     this.inputRef?.ngControl?.statusChanges?.subscribe(this.updateErrors);
   }
 
-  private updateErrors = (state: 'VALID' | 'INVALID'): void => {
+  private updateErrors = (state: FormControlStatus): void => {
     if (state === 'INVALID') {
       const controlErrors = this.inputRef?.ngControl?.errors || [];
       const firstError = Object.keys(controlErrors)[0];
-      this.error = VALIDATION_MESSAGES[firstError] || '';
+      const newError = VALIDATION_MESSAGES[firstError] || '';
+      if (this.lastError !== this.error) {
+        this.error = newError;
+      }
     }
   };
 }
