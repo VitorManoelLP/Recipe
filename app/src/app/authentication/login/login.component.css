@@ -1,15 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 mat-form-field {
   display: block;
-}
-
-mat-error {
-  display: block;
-  margin-top: 0.5em;
 }
 
 .container {
@@ -21,34 +11,20 @@ mat-error {
 
 .container-center {
   justify-content: center;
-  width: 700px;
-  height: 600px;
-  background-color: #fff;
+  max-width: 700px;
+  min-width: 300px;
+  width: 100%;
+  height: 500px;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 24px 16px;
 }
 
-.button-group {
+mat-card-actions {
   display: flex;
-  justify-content: center;
-}
-
-.button-group>button {
-  margin: 5px;
-}
-
-.form-field-spacing {
-  margin: 10px;
-}
-
-.forgot-password-link {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 10px;
-}
-
-.forgot-password-link>a {
-  text-decoration: none;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .mat-card-title-centered {
