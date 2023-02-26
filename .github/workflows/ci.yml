@@ -1,12 +1,16 @@
 name: Pipeline Tests;
 
-on: push
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 jobs:
   backend-suite:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: Pmd
         run: docker build -f ./continuous\ integration/Pmd .
       - name: Backend Recipe Test/Build

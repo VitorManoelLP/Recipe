@@ -1,0 +1,80 @@
+<div class="container">
+  <mat-card class="container-center">
+
+    <mat-card-title class="mat-card-title mat-card-title-centered">
+      <img src="../../assets/logo_login.png" style="max-width: 50px;">
+      Bem-vindo ao Meu Livro de Receitas - Compartilhe e Descubra Receitas Deliciosas!
+    </mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="form">
+
+        <mat-form-field appearance="outline" class="form-field-spacing">
+
+          <mat-label><mat-icon>person</mat-icon>Email</mat-label>
+          <input matInput placeholder="Digite seu email" formControlName="email">
+
+          <mat-error>
+            <span *ngIf="form.controls['email'].errors?.['required']">
+              Este campo é obrigatório
+            </span>
+
+            <span *ngIf="form.controls['email'].errors?.['maxLength']">
+              O e-mail tem um tamanho máximo de 254 caracteres.
+            </span>
+
+            <span *ngIf="form.controls['email'].errors?.['email']">
+              Email inválido.
+            </span>
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-spacing">
+
+          <mat-label><mat-icon>lock</mat-icon>Senha</mat-label>
+
+          <input matInput [type]="hide ? 'password' : 'text'"
+            placeholder="Digite sua senha" formControlName="password"
+            matTooltip="{{ form.controls['password'].errors?.['pattern'] ? 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um símbolo especial (como @ ou $), e pelo menos um dígito. Certifique-se de que sua senha atenda a todos esses requisitos para continuar.' : '' }}"
+            matTooltipPosition="right">
+
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide" >
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+          <mat-error>
+            <span *ngIf="form.controls['password'].errors?.['required']">
+              Este campo é obrigatório
+            </span>
+
+            <span *ngIf="form.controls['password'].errors?.['minLength']">
+              Senha deve conter no mínimo 8 dígitos.
+            </span>
+          </mat-error>
+
+        </mat-form-field>
+
+        <div class="forgot-password-link">
+          <a href="#">Esqueci minha senha</a>
+        </div>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="button-group">
+
+      <button mat-raised-button style="color: #FFFF; background-color: #4CAF50;" [disabled]="form.invalid"
+        [ngClass]="{'mat-button-disabled': form.invalid}" (click)="login()">
+        Entrar
+      </button>
+
+      <button mat-flat-button color="warn" routerLink="/register">
+        Registrar-se
+      </button>
+
+    </mat-card-actions>
+
+  </mat-card>
+</div>
