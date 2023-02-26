@@ -10,10 +10,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormFieldValidationModule } from '../../shared/directives/form-field-validation/form-field-validation.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 
-const routes: Routes = [
-  { path: '', component: RegisterComponent }
-]
+const routes: Routes = [{ path: '', component: RegisterComponent }];
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -27,6 +28,9 @@ const routes: Routes = [
     MatIconModule,
     ReactiveFormsModule,
     MatTooltipModule,
-  ]
+    FormFieldValidationModule,
+    MatGridListModule,
+    MatDividerModule,
+  ],
 })
-export class RegisterModule { }
+export class RegisterModule {}
