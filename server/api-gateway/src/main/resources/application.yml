@@ -4,6 +4,17 @@ server:
 spring:
   application:
     name: api-gateway
+  datasource:
+    url: jdbc:postgresql://localhost:5432/recipe?currentSchema=auth
+    username: auth_user
+    password: Ys8EaGzJ#eS4
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
   cloud:
     discovery:
       enabled: true
@@ -21,6 +32,7 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
+
 
 management:
   endpoints:

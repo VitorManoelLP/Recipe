@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormFieldValidationModule } from '../../shared/directives/form-field-validation/form-field-validation.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 const routes: Routes = [{ path: '', component: RegisterComponent }];
 
@@ -32,5 +33,6 @@ const routes: Routes = [{ path: '', component: RegisterComponent }];
     MatGridListModule,
     MatDividerModule,
   ],
+  providers: [AuthenticationService]
 })
-export class RegisterModule {}
+export class RegisterModule { }

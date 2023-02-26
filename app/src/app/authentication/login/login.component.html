@@ -65,7 +65,7 @@
 
     <mat-card-actions>
       <button mat-stroked-button routerLink="/register">Registrar-se</button>
-      <button mat-flat-button color="primary" (click)="login()">Entrar</button>
+      <button mat-flat-button color="primary" (click)="login()" [disabled]="form.invalid">Entrar</button>
     </mat-card-actions>
   </mat-card>
 </div>
