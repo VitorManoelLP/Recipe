@@ -21,6 +21,16 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
+      datasource:
+        url: jdbc:postgresql://localhost:5432/auth
+        username: user
+        password: user
+      jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+        hibernate:
+          ddl-auto: update
+
 
 management:
   endpoints:

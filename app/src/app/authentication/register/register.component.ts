@@ -2,6 +2,7 @@ import { LoginComponent } from './../login/login.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { sameValue } from 'src/app/shared/validators/same-value';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.form = this.createForm();
@@ -40,8 +42,10 @@ export class RegisterComponent implements OnInit {
   }
 
   public register() {
-    this.form.reset();
-    this.form.clearValidators();
+    const { nome, email, senha } = this.form.value;
+    this._authenticationService.save({ nome, email, senha }).subscribe(resp => {
+      this.form.reset();
+    });
   }
 
 }

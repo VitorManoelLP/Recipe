@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 const routes: Routes = [
   { path: '', component: RegisterComponent }
@@ -27,6 +28,7 @@ const routes: Routes = [
     MatIconModule,
     ReactiveFormsModule,
     MatTooltipModule,
-  ]
+  ],
+  providers: [AuthenticationService]
 })
 export class RegisterModule { }

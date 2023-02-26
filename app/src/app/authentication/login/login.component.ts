@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   form: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.form = this.createForm();
@@ -40,8 +42,9 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    this.form.reset();
-    this.form.clearValidators();
+    this._authenticationService.login(this.form.getRawValue()).subscribe(resp => {
+      this.form.reset();
+    });
   }
 
 }
