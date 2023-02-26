@@ -3,6 +3,7 @@ package com.gateway.apigateway.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,17 +22,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @Column(nullable = false)
+    @NotNull(message = "Nome não pode ser vazio!")
+    @Column
     private String nome;
 
-    @Email
+    @Email(message = "Email inválido")
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    @Length(min = 8)
-    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+-=]).{8,}$")
+    @Length(min = 8, max = 16, message = "Senha inválida")
+    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+-=]).{8,}$", message = "Senha inválida")
     private String password;
-
 
 }
