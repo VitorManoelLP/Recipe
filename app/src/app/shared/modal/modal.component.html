@@ -1,0 +1,7 @@
+<h2 mat-dialog-title class="custom-title" [style.background-color]="data.type == 'error' ? '#F44336' : data.type == 'success' ? '#8BC34A' : '#2196F3'">{{ data.title}}</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Fechar</button>
+</mat-dialog-actions>

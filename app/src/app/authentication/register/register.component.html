@@ -88,7 +88,7 @@
 
     <mat-card-actions>
       <button mat-stroked-button routerLink="/login">Voltar</button>
-      <button mat-flat-button color="primary" (click)="register()">
+      <button mat-flat-button color="primary" (click)="register()" [disabled]="form.invalid">
         Registrar
       </button>
     </mat-card-actions>
