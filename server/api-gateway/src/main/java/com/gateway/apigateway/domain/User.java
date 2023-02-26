@@ -9,14 +9,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.UUID;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +38,22 @@ public class User {
     @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+-=]).{8,}$", message = "Senha inválida")
     private String password;
 
+    @Transient
+    public Collection<? extends GrantedAuthority> authorities;
+
+    @Transient
+    public String username;
+
+    @Transient
+    public boolean isAccountNonExpired;
+
+    @Transient
+    public boolean isAccountNonLocked;
+
+    @Transient
+    public boolean isCredentialsNonExpired;
+
+    @Transient
+    public boolean isEnabled;
+    
 }

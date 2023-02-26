@@ -32,6 +32,8 @@ spring:
         locator:
           enabled: true
           lowerCaseServiceId: true
+  main:
+    allow-bean-definition-overriding: true
 
 
 management:
